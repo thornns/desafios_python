@@ -50,7 +50,7 @@ print("Usuário OK")
 # Campo de Senha
 login_pwd = driver.find_element(By.ID, 'loginForm_password')
 login_pwd.click()
-login_pwd.send_keys('@Rbn876rx')
+login_pwd.send_keys('')
 login_pwd.send_keys(Keys.RETURN)
 print("Senha OK")
 
