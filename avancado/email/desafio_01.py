@@ -24,7 +24,7 @@ import yagmail
 df = pd.read_excel('Enviar E-mails.xlsx')
 
 usuario = yagmail.SMTP(user='danielsantarita@gmail.com',
-                       password='exqstjrrpglnuima')
+                       password='')
 
 for i, email in enumerate(df['E-mail']):
 
