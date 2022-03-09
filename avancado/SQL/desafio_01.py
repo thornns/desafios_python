@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 conexao = pyodbc.connect(r"Driver=SQL Server;"
-                         r"Server=EXYON-335;"
+                         r"Server=;"
                          r"Database=ContosoRetailDW;"
                          r"UID=python;"
                          r"PWD=1234567890;")
