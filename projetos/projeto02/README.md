@@ -4,7 +4,12 @@ Através de um dataframe excel, buscar produtos em uma determinada faixa de pre�
 
 O dataframe possui 4 colunas: Nome, Termos Banidos, Preço Mínimo e Preço Máximo
 
-Exemplo: iphone 12 64 gb | mini watch | 4200 | 8000
+Exemplo:
+
+| Nome          | Termos Banidos           | Preço Mínimo  | Preço Máximo |
+|---------------|--------------------------|---------------|--------------|
+|iphone 12 64 gb|         mini watch       |      4200     |     8000     |
+
 ## Passos
 Para cada produto:
 - transformar a coluna 'Nome' em uma lista
