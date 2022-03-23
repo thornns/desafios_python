@@ -7,7 +7,7 @@ O dataframe possui 4 colunas: Nome, Termos Banidos, Preço Mínimo e Preço Máx
 Exemplo:
 
 | Nome          | Termos Banidos           | Preço Mínimo  | Preço Máximo |
-|---------------|--------------------------|---------------|--------------|
+|:--------------|:-------------------------|--------------:|-------------:|
 |iphone 12 64 gb|         mini watch       |      4200     |     8000     |
 
 ## Passos
