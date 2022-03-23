@@ -10,17 +10,6 @@ import time
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('headless')
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-"""
-Para cada produto:
-1 - Procurar no Google Shopping
-    acessar o google
-    pesquisar pelo df[Nome]
-    clicar na aba Shopping
-    pegar o preço do produto
-2 - Procurar no Buscapé
-3 - Verificar se os produtos de (1) estão na faixa de preços
-4 - Verificar se os produtos de (2) estão na faixa de preços
-"""
 
 """
 Pesquisa Google:
@@ -72,6 +61,7 @@ def buscar_google(navegador, produto: str, banido: str, preco_min: float, preco_
                 tem_produtos = False
 
         if not tem_banidos and tem_produtos:
+            # Tratando os preços, para transformação em float
             precos = resultado.find_element(By.CLASS_NAME, 'a8Pemb').text
             precos = precos.replace('R$', '').replace(' ', '').replace('.', '').replace(',', '.')
             precos = float(precos)
@@ -82,7 +72,6 @@ def buscar_google(navegador, produto: str, banido: str, preco_min: float, preco_
                 tem_preco = True
 
             if tem_preco:
-                # Pegando o link pelo CSS Selector:
                 links = resultado.find_element(By.CSS_SELECTOR, 'a.shntl').get_attribute('href')
                 lista_ofertas.append((nomes, precos, links))
 
@@ -118,13 +107,11 @@ def buscarpe(navegador, produto: str, banido: str, preco_min: float, preco_max: 
     for resultado in resultados:
         nomes = resultado.find_element(By.CLASS_NAME, 'Text_LabelSmRegular__2Lr6I').text.lower()
 
-        # Verificando existência de termos banidos
         tem_banidos = False
         for termo in banido_termos:
             if termo in nomes:
                 tem_banidos = True
 
-        # Verificando se o item encontrado possui todos os itens de pesquisa
         tem_produtos = True
         for termo in produto_termos:
             if termo not in nomes:
@@ -135,20 +122,18 @@ def buscarpe(navegador, produto: str, banido: str, preco_min: float, preco_max: 
             precos = precos.replace('R$', '').replace(' ', '').replace('.', '').replace(',', '.')
             precos = float(precos)
 
-            # Verificando os preços
             tem_preco = False
             if (precos >= float(preco_min)) and (precos <= float(preco_max)):
                 tem_preco = True
 
             if tem_preco:
-                # Pegando o link pelo CSS Selector:
                 links = resultado.find_element(By.CSS_SELECTOR, 'a.Cell_Content__1630r').get_attribute('href')
                 lista_ofertas.append((nomes, precos, links))
 
     return lista_ofertas
 
 """
-Importar e visualizar os itens da base de dados
+Importar a base de dados
 """
 df = pd.read_excel('buscas.xlsx')
 
@@ -175,8 +160,7 @@ for produtos in df['Nome']:
 driver.close()
 
 """
-Salvar as ofertas em um Dataframe
-Exportar para excel
+Salvar as ofertas em um Dataframe e exportar para Excel
 """
 tabela.to_excel('ofertas.xlsx', index=False)
 
