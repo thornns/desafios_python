@@ -94,3 +94,5 @@ Por exemplo: Castelo, Ilha, Avião... não condizem com o objetivo e seriam melh
 11. Deploy
 - Escolher a forma: Executável (Tkinter), API (Flask), Uso direto (Streamlit)
 - Criar um arquivo joblib (este arquivo armazena a inteligência artificial já treinada) para usar no deployment.py
+
+![Deploy no Streamlit](https://i.imgur.com/Gxpq5AR.png "Deploy no Streamlit")
