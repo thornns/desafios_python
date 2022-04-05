@@ -73,6 +73,11 @@ Por exemplo: Castelo, Ilha, Avião... não condizem com o objetivo e seriam melh
 
 9. Analisar o melhor modelo baseado nos resultados do R², RSME e velocidade de execução
 
+     - Modelo Random Forest: R² = 0.9712254881064659, RSME = 45.08366313315145
+     - Modelo Linear Regression: R² = 0.3311542520033258, RSME = 217.35928591283252
+     - Modelo Extra Trees: R² = 0.9743065606132622, RSME = 42.601641689138276
+     - Random Forest e Extra Trees são bem parecidos, mas o Extra Trees roda mais rápido.
+
 10. Ajustes e melhorias no modelo
 
     - A coluna com o número de amenidades reflete supreendentemente bem no preço, e isso pode significar que:
