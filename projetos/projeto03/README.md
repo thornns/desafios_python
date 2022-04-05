@@ -67,8 +67,8 @@ Por exemplo: Castelo, Ilha, Avião... não condizem com o objetivo e seriam melh
 
 8. Previsão
     - Definir se é Classificação (dividir em categorias: SPAM ou Não SPAM, por exemplo) ou Regressão (encontrar valor: velocidade, preço)
-    - Escolher as métricas para avaliar o modelo (usaemos R² e RSME)
-    - Escolher quais modelos (usaremo linear regression, random forest e extra tree)
+    - Escolher as métricas para avaliar o modelo (usaremos R² e RSME)
+    - Escolher quais modelos (usaremos linear regression, random forest e extra tree)
     - Treinar os modelos e testar
 
 9. Analisar o melhor modelo baseado nos resultados do R², RSME e velocidade de execução
