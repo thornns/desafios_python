@@ -103,7 +103,7 @@ airbnb_df['extra_people'] = airbnb_df['extra_people'].astype(np.float32, copy=Fa
 # 6.1
 rcParams.update({'figure.autolayout': True})
 sns.heatmap(airbnb_df.corr(), annot=True, cmap='Greens')
-# plt.show()
+plt.show()
 
 # 6.2
 def limites(colunas) -> tuple:
@@ -155,12 +155,12 @@ def excluir_outliers(pd_df, colunas):
     return pd_df, linhas_removidas
 
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'price')
-print(f'price: {lin_remov} linhas removidas.')  # 87282 é cerca de 10% da base
+print(f'price: {lin_remov} linhas removidas.')
 histograma(airbnb_df['price'])
 plt.show()
 
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'extra_people')
-print(f'extra_people: {lin_remov} linhas removidas.')  # 59194 é cerca de 4% da base
+print(f'extra_people: {lin_remov} linhas removidas.')
 
 """
 Com valores discretos é melhor barra que histograma
@@ -179,15 +179,15 @@ plt.show()
 # Neste caso, o limite superior é 6, então podemos excluir pois nosso objetivo são imóveis "comuns" e não imobiliárias.
 # host_listings_count são o número de imóveis que 01 usuário está disponibilizando
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'host_listings_count')
-print(f'host_listings_count: {lin_remov} linhas removidas.')  # 97723 é cerca de 13% da base
+print(f'host_listings_count: {lin_remov} linhas removidas.')
 
 # Neste caso, o limite superior é 9, casas que acomodam mais do que essa quantidade de hóspedes tendem a ser grandes.
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'accommodates')
-print(f'accommodates: {lin_remov} linhas removidas.')  # 13146 é cerca de 2% da base
+print(f'accommodates: {lin_remov} linhas removidas.')
 
 # Neste caso, o limite superior é 3.5 banheiros
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'bathrooms')
-print(f'bathrooms: {lin_remov} linhas removidas.')  # 6894 é cerca de 1% da base
+print(f'bathrooms: {lin_remov} linhas removidas.')
 
 # Neste caso, o limite superior é 3
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'bedrooms')
@@ -204,7 +204,7 @@ airbnb_df = airbnb_df.drop('guests_included', axis=1)
 
 # Neste caso, o limite superior é 8, não estamos procurando aluguel de temporada. Podemos remover os outliers
 airbnb_df, lin_remov = excluir_outliers(airbnb_df, 'minimum_nights')
-print(f'minimum_nights: {lin_remov} linhas removidas.')  # 40383 é cerca de 6% da base
+print(f'minimum_nights: {lin_remov} linhas removidas.')
 
 # Neste caso, o limite superior é 2000, não estamos procurando aluguel de temporada. Podemos remover a coluna
 airbnb_df = airbnb_df.drop('maximum_nights', axis=1)
@@ -268,7 +268,7 @@ for tipo in agrupar_tipo:
 # O novo valor 'Restrito' substituiu 9863 valores, em um universo superior a 500.000
 print(airbnb_df['cancellation_policy'].value_counts())
 
-# Esta solução sobre o número de amenidades foi feita de acordo com o racicínio do dev original: https://www.kaggle.com/allanbruno/airbnb-rio-de-janeiro
+# Esta solução sobre o número de amenidades foi feita de acordo com o raciocínio do dev original: https://www.kaggle.com/allanbruno/airbnb-rio-de-janeiro
 # Em resumo: Existem muitas amenities, algumas iguais, mas escritas de forma diferente
 # Algumas podem estar descritas ou não (como elevador. Algo tão comum que o host não adicione na lista, mas possua um no local)
 # Desta forma, para o modelo, será avaliada QUANTIDADE e não QUAIS amenities.
